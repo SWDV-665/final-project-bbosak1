@@ -1,6 +1,19 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+);
+
+.remove-button {
+  background-color: map-get($colors, 'danger');
+  color: map-get($colors, 'light');
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
