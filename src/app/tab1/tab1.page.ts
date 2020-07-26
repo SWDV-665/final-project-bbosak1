@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ToastController, AlertController } from '@ionic/angular';
+import { TutorServiceProvider } from '../../providers/tutor-service/tutor-service';
+import { InputDialogServiceProvider } from '../../providers/input-dialog-service/input-dialog-service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -11,22 +14,27 @@ export class Tab1Page {
 
   title = "Tutor";
 
-  contacts = [
-    {
-      name: "John Doe",
-      phoneNo: "555-123-4567"
-    },
-    {
-      name: "Jane Doe",
-      phoneNo: "555-999-0000"
-    },
-  ];
+  // contacts = [
+  //   {
+  //     name: "John Doe",
+  //     phoneNo: "555-123-4567"
+  //   },
+  //   {
+  //     name: "Jane Doe",
+  //     phoneNo: "555-999-0000"
+  //   },
+  // ];
 
   constructor (
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public dataService: TutorServiceProvider,
+    public inputDialogService: InputDialogServiceProvider) {
+  }
 
+  loadContacts() {
+    return this.dataService.getContacts();
   }
 
   removeContact(contact, i) {
@@ -35,42 +43,11 @@ export class Tab1Page {
       duration: 2000
     });
     this.toastCtrl.create();
-    this.contacts.splice(i, 1);
+    this.dataService.removeContact(i);
   }
 
   addContact() {
-    this.showAddContactPrompt()
+    this.inputDialogService.showAddContactPrompt();
   }
 
-  async showAddContactPrompt() {
-    const prompt = await this.alertCtrl.create({
-      header: 'Add Item',
-      message: "Please enter item...",
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Name'
-        },
-        {
-          name: 'phoneNo',
-          placeholder: 'Phone Number'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: contact => {
-            this.contacts.push(contact);
-          }
-        }
-      ]
-    });
-    await prompt.present();
-  }
 }

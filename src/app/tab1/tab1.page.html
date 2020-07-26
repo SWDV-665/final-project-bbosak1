@@ -14,7 +14,7 @@
   </ion-header>
 
   <ion-list>
-    <ion-item-sliding  *ngFor="let contact of contacts; let i = index">
+    <ion-item-sliding  *ngFor="let contact of loadContacts(); let i = index">
       <ion-item>
         <h2>{{contact.name}}</h2>
         <p>{{contact.phoneNo}}</p>
@@ -28,6 +28,6 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab-button (click)="showAddContactPrompt()"><ion-icon name="add-outline"></ion-icon></ion-fab-button>
+  <ion-fab-button bottom right (click)="addContact()"><ion-icon name="add-outline"></ion-icon></ion-fab-button>
 
 </ion-content>
