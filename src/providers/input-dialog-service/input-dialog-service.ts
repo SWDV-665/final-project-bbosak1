@@ -8,34 +8,40 @@ export class InputDialogServiceProvider {
   constructor(
     public alertCtrl: AlertController,
     public dataService: TutorServiceProvider) {
-    console.log('Hello InputDialogServiceProvider Provider');
   }
 
-  async showAddContactPrompt() {
+  async showPrompt(contact?, index?) {
     const prompt = await this.alertCtrl.create({
-      header: 'Add Item',
-      message: "Please enter item...",
+      header: contact ? 'Edit Contact' : 'Add Contact',
+      message: contact ? "Please edit contact..." : "Please enter contact...",
       inputs: [
         {
           name: 'name',
-          placeholder: 'Name'
+          placeholder: 'Name',
+          value: contact ? contact.name : null
         },
         {
           name: 'phoneNo',
-          placeholder: 'Phone Number'
+          placeholder: 'Phone Number',
+          value: contact ? contact.phoneNo : null
         },
       ],
       buttons: [
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Save',
           handler: contact => {
-            this.dataService.addContact(contact);
+            // this.dataService.addContact(contact);
+            if (index !== undefined) {
+              this.dataService.editContact(contact, index);
+            }
+            else {
+              this.dataService.addContact(contact);
+            }
           }
         }
       ]

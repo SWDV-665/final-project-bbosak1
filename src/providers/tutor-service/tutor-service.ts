@@ -15,7 +15,6 @@ export class TutorServiceProvider {
   ];
 
   constructor() {
-    console.log('Hello TutorServiceProvider Provider');
   }
 
   getContacts() {

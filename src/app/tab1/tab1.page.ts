@@ -46,8 +46,17 @@ export class Tab1Page {
     this.dataService.removeContact(i);
   }
 
+  editContact(contact, index) {
+    const toast = this.toastCtrl.create({
+      message: 'Editing Item - ' + index + " ...",
+      duration: 3000
+    });
+    this.toastCtrl.create();
+    this.inputDialogService.showPrompt(contact, index);
+  }
+
   addContact() {
-    this.inputDialogService.showAddContactPrompt();
+    this.inputDialogService.showPrompt();
   }
 
 }
