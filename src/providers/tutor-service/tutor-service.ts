@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TutorServiceProvider {
 
-  contacts = [
+  students = [
     {
       name: "John Doe",
       phoneNo: "555-123-4567"
@@ -17,20 +17,20 @@ export class TutorServiceProvider {
   constructor() {
   }
 
-  getContacts() {
-    return this.contacts;
+  getStudents() {
+    return this.students;
   }
 
   removeContact(index) {
-    this.contacts.splice(index, 1);
+    this.students.splice(index, 1);
   }
 
   addContact(contact) {
-    this.contacts.push(contact);
+    this.students.push(contact);
   }
 
   editContact(contact, index) {
-    this.contacts[index] = contact;
+    this.students[index] = contact;
   }
 
 }

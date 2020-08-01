@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Contacts
+      Students
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,12 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Contacts</ion-title>
+      <ion-title size="large">Students</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-list>
-    <ion-item-sliding  *ngFor="let contact of loadContacts(); let i = index">
+    <ion-item-sliding  *ngFor="let contact of loadStudents(); let i = index">
       <ion-item>
         <ion-label>
           <h2>{{contact.name}}</h2>

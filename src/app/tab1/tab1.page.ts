@@ -33,8 +33,8 @@ export class Tab1Page {
     public inputDialogService: InputDialogServiceProvider) {
   }
 
-  loadContacts() {
-    return this.dataService.getContacts();
+  loadStudents() {
+    return this.dataService.getStudents();
   }
 
   removeContact(contact, i) {
