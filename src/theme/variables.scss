@@ -19,6 +19,11 @@ $colors: (
   color: map-get($colors, 'light');
 }
 
+.call-button {
+  background-color: map-get($colors, 'light');
+  color: map-get($colors, 'dark');
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

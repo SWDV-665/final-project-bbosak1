@@ -10,20 +10,20 @@ export class InputDialogServiceProvider {
     public dataService: TutorServiceProvider) {
   }
 
-  async showPrompt(contact?, index?) {
+  async showPrompt(student?, index?) {
     const prompt = await this.alertCtrl.create({
-      header: contact ? 'Edit Contact' : 'Add Contact',
-      message: contact ? "Please edit contact..." : "Please enter contact...",
+      header: student ? 'Edit Student' : 'Add Student',
+      message: student ? "Please edit student..." : "Please enter student...",
       inputs: [
         {
           name: 'name',
           placeholder: 'Name',
-          value: contact ? contact.name : null
+          value: student ? student.name : null
         },
         {
           name: 'phoneNo',
           placeholder: 'Phone Number',
-          value: contact ? contact.phoneNo : null
+          value: student ? student.phoneNo : null
         },
       ],
       buttons: [
@@ -34,13 +34,13 @@ export class InputDialogServiceProvider {
         },
         {
           text: 'Save',
-          handler: contact => {
-            // this.dataService.addContact(contact);
+          handler: student => {
+            // this.dataService.addStudent(student);
             if (index !== undefined) {
-              this.dataService.editContact(contact, index);
+              this.dataService.editStudent(student, index);
             }
             else {
-              this.dataService.addContact(contact);
+              this.dataService.addStudent(student);
             }
           }
         }

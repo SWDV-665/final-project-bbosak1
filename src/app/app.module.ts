@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { TutorServiceProvider } from '../providers/tutor-service/tutor-service';
 import { InputDialogServiceProvider } from '../providers/input-dialog-service/input-dialog-service';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,6 +22,8 @@ import { InputDialogServiceProvider } from '../providers/input-dialog-service/in
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
