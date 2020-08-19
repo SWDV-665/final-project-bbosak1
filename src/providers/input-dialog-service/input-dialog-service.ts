@@ -25,6 +25,11 @@ export class InputDialogServiceProvider {
           placeholder: 'Phone Number',
           value: student ? student.phoneNo : null
         },
+        {
+          name: 'emailAddr',
+          placeholder: 'Email Address',
+          value: student ? student.emailAddr : null
+        },
       ],
       buttons: [
         {
@@ -34,9 +39,11 @@ export class InputDialogServiceProvider {
         },
         {
           text: 'Save',
-          handler: student => {
-            // this.dataService.addStudent(student);
+          handler: data => {
             if (index !== undefined) {
+              student.name = data.name;
+              student.phoneNo = data.phoneNo;
+              student.emailAddr = data.emailAddr;
               this.dataService.editStudent(student, index);
             }
             else {

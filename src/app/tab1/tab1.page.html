@@ -14,7 +14,7 @@
   </ion-header>
 
   <ion-list>
-    <ion-item-sliding  *ngFor="let student of loadStudents(); let i = index">
+    <ion-item-sliding  *ngFor="let student of students; let i = index">
       <ion-item>
         <ion-label>
           <h2>{{student.name}}</h2>
@@ -32,12 +32,12 @@
           Email
         </button>
 
-        <button (click)="editStudent(contstudentact, i)" ion-button class="edit-button" icon-start>
+        <button (click)="editStudent(student, i)" ion-button class="edit-button" icon-start>
           <ion-icon name="create"></ion-icon>
           Edit
         </button>
 
-        <button (click)="removeStudent(student, i)" ion-button class="remove-button" icon-start>
+        <button (click)="removeStudent(student)" ion-button class="remove-button" icon-start>
           <ion-icon name="trash"></ion-icon>
           Remove
         </button>

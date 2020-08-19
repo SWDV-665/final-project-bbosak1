@@ -11,6 +11,8 @@ import { InputDialogServiceProvider } from '../../providers/input-dialog-service
 })
 export class Tab1Page {
 
+  students = [];
+  errorMessage: string;
   title = "Tutor";
 
   constructor (
@@ -20,27 +22,30 @@ export class Tab1Page {
     public dataService: TutorServiceProvider,
     public inputDialogService: InputDialogServiceProvider,
     ) {
+      this.loadStudents();
+      dataService.dataChanged$.subscribe((dataChanged: boolean) => {
+        this.loadStudents();
+      }
+    );
   }
+
+  // ionViewDidLoad() {
+  //   this.loadStudents();
+  // }
 
   loadStudents() {
-    return this.dataService.getStudents();
+    this.dataService.getStudents()
+      .subscribe (
+        students => this.students = students,
+        error => this.errorMessage = <any>error
+      );
   }
 
-  removeStudent(student, i) {
-    const toast = this.toastCtrl.create({
-      message: 'Removing Item - ' + student.name + " ...",
-      duration: 2000
-    });
-    this.toastCtrl.create();
-    this.dataService.removeStudent(i);
+  removeStudent(student) {
+    this.dataService.removeStudent(student);
   }
 
   editStudent(student, index) {
-    const toast = this.toastCtrl.create({
-      message: 'Editing Item - ' + index + " ...",
-      duration: 3000
-    });
-    this.toastCtrl.create();
     this.inputDialogService.showPrompt(student, index);
   }
 
