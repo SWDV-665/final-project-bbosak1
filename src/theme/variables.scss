@@ -6,7 +6,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  email:     purple,
 );
 
 .remove-button {
@@ -20,8 +21,13 @@ $colors: (
 }
 
 .call-button {
-  background-color: map-get($colors, 'light');
-  color: map-get($colors, 'dark');
+  background-color: map-get($colors, 'secondary');
+  color: map-get($colors, 'light');
+}
+
+.email-button {
+  background-color: map-get($colors, 'email');
+  color: map-get($colors, 'light');
 }
 
 /** Ionic CSS Variables **/

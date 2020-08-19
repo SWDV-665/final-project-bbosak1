@@ -6,14 +6,27 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    CalendarModule
   ],
   declarations: [Tab2Page]
 })
-export class Tab2PageModule {}
+export class Tab2PageModule {
+
+  date: string;
+  type: 'string';
+
+  constructor() { }
+
+  onChange($event) {
+    console.log($event);
+  }
+
+}

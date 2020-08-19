@@ -16,6 +16,8 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CalendarModule } from 'ion2-calendar';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    CalendarModule
   ],
   providers: [
     StatusBar,
