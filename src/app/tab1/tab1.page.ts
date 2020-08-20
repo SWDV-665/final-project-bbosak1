@@ -29,10 +29,6 @@ export class Tab1Page {
     );
   }
 
-  // ionViewDidLoad() {
-  //   this.loadStudents();
-  // }
-
   loadStudents() {
     this.dataService.getStudents()
       .subscribe (

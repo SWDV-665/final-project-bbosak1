@@ -14,6 +14,7 @@ export class TutorServiceProvider {
   private dataChangeSubject: Subject<boolean>;
 
   baseURL = "http://localhost:8080/";
+  apptURL = "http://localhost:8081/";
 
   constructor(
     public callNumber: CallNumber,
@@ -57,6 +58,8 @@ export class TutorServiceProvider {
   }
 
   addStudent(student) {
+    console.log('hi');
+    console.log(student);
     this.http.post(this.baseURL + "api/students", student)
       .subscribe(res => {
         this.students = res;
@@ -85,6 +88,14 @@ export class TutorServiceProvider {
     this.emailComposer.open(email)
       .then(res => console.log('Launched email!', res))
       .catch(err => console.log('Error launching email', err));
+  }
+
+  // Appointments
+  getAppts(): Observable<any> {
+    return this.http.get(this.apptURL + 'api/appts').pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
   }
 
 }

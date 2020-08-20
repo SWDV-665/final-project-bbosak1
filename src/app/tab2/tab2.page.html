@@ -8,12 +8,15 @@
 
 <ion-content>
   <div class="ion-padding">
-
     <ion-calendar [(ngModel)]="date"
-      (onChange)="onChange($event)"
+      (change)="onChange($event)"
       [type]="type"
       [format]="'YYYY-MM-DD'">
-    </ion-calendar>
-
+  </ion-calendar>
+  </div>
+  <div>
+    <h1 *ngFor="let appt of appts; let i = index">
+      {{appt.appt}}
+    </h1>
   </div>
 </ion-content>

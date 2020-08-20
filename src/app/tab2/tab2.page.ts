@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TutorServiceProvider } from '../../providers/tutor-service/tutor-service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,27 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  appts = [];
+  errorMessage: string;
+  show: boolean = true;
+
+  constructor(
+    public dataService: TutorServiceProvider,
+  ) {
+    this.loadAppts();
+  }
+
+  onChange($event) {
+    // console.log($event.format('MM-DD-YYYY'));
+    console.log($event);
+  }
+
+  loadAppts() {
+    this.dataService.getAppts()
+      .subscribe (
+        appts => this.appts = appts,
+        error => this.errorMessage = <any>error
+      );
+  }
 
 }

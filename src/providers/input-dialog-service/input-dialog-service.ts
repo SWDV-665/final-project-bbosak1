@@ -47,7 +47,7 @@ export class InputDialogServiceProvider {
               this.dataService.editStudent(student, index);
             }
             else {
-              this.dataService.addStudent(student);
+              this.dataService.addStudent(data);
             }
           }
         }

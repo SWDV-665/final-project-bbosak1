@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
+import { TutorServiceProvider } from '../../providers/tutor-service/tutor-service';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { CalendarModule } from 'ion2-calendar';
@@ -16,6 +17,9 @@ import { CalendarModule } from 'ion2-calendar';
     Tab2PageRoutingModule,
     CalendarModule
   ],
+  providers: [
+    TutorServiceProvider,
+  ],
   declarations: [Tab2Page]
 })
 export class Tab2PageModule {
@@ -24,9 +28,5 @@ export class Tab2PageModule {
   type: 'string';
 
   constructor() { }
-
-  onChange($event) {
-    console.log($event);
-  }
 
 }
