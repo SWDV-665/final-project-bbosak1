@@ -30,6 +30,14 @@ $colors: (
   color: map-get($colors, 'light');
 }
 
+.appt-table {
+  padding-left: 50px;
+}
+
+.appt-data {
+  padding: 4px;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

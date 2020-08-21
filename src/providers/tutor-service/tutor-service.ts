@@ -9,6 +9,7 @@ import { Observable, Subject } from 'rxjs';
 export class TutorServiceProvider {
 
   students: any = [];
+  appts: any = [];
   dataChanged$: Observable<boolean>;
 
   private dataChangeSubject: Subject<boolean>;
@@ -58,13 +59,19 @@ export class TutorServiceProvider {
   }
 
   addStudent(student) {
-    console.log('hi');
-    console.log(student);
     this.http.post(this.baseURL + "api/students", student)
       .subscribe(res => {
         this.students = res;
         this.dataChangeSubject.next(true);
       });
+  }
+
+  addAppt(appt) {
+    this.http.post(this.apptURL + "api/appts", appt)
+      .subscribe(res => {
+        this.appts = res;
+        this.dataChangeSubject.next(true);
+      })
   }
 
   editStudent(student, index) {

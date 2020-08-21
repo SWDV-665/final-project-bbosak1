@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TutorServiceProvider } from '../../providers/tutor-service/tutor-service';
+import { InputDialogServiceProvider } from '../../providers/input-dialog-service/input-dialog-service';
 
 @Component({
   selector: 'app-tab2',
@@ -14,13 +15,16 @@ export class Tab2Page {
 
   constructor(
     public dataService: TutorServiceProvider,
+    public inputDialogService: InputDialogServiceProvider,
   ) {
     this.loadAppts();
+    dataService.dataChanged$.subscribe((dataChanged: boolean) => {
+      this.loadAppts();
+    })
   }
 
   onChange($event) {
-    // console.log($event.format('MM-DD-YYYY'));
-    console.log($event);
+    console.log($event.format('MM-DD-YYYY'));
   }
 
   loadAppts() {
@@ -29,6 +33,10 @@ export class Tab2Page {
         appts => this.appts = appts,
         error => this.errorMessage = <any>error
       );
+  }
+
+  addAppt() {
+    this.inputDialogService.showApptPrompt();
   }
 
 }

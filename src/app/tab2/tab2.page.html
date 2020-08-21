@@ -14,9 +14,37 @@
       [format]="'YYYY-MM-DD'">
   </ion-calendar>
   </div>
-  <div>
-    <h1 *ngFor="let appt of appts; let i = index">
-      {{appt.appt}}
-    </h1>
+  <div class="appt-table">
+    <table>
+      <tr>
+        <th class="appt-data">
+          Date
+        </th>
+        <th class="appt-data">
+          Time
+        </th>
+        <th class="appt-data">
+          Name
+        </th>
+      </tr>
+      <tr *ngFor="let appt of appts; let i = index">
+        <td class="appt-data">
+          {{appt.date}}
+        </td>
+        <td class="appt-data">
+          {{appt.time}}
+        </td>
+        <td class="appt-data">
+          {{appt.name}}
+        </td>
+      </tr>
+    </table>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addAppt()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

@@ -55,4 +55,52 @@ export class InputDialogServiceProvider {
     });
     await prompt.present();
   }
+
+  async showApptPrompt(appt?, index?) {
+    const prompt = await this.alertCtrl.create({
+      header: appt ? 'Edit appt' : 'Add appt',
+      message: appt ? "Please edit appt..." : "Please enter appt...",
+      inputs: [
+        {
+          name: 'date',
+          placeholder: 'Date',
+          value: appt ? appt.date : null
+        },
+        {
+          name: 'time',
+          placeholder: 'Time',
+          value: appt ? appt.time : null
+        },
+        {
+          name: 'name',
+          placeholder: 'Name',
+          value: appt ? appt.name : null
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            if (index !== undefined) {
+              appt.date = data.date;
+              appt.time = data.time;
+              appt.name = data.name;
+              // this.dataService.editStudent(appt, index);
+            }
+            else {
+              this.dataService.addAppt(data);
+            }
+          }
+        }
+      ]
+    });
+    await prompt.present();
+  }
+
+
 }
