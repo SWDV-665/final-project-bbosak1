@@ -90,10 +90,54 @@ export class InputDialogServiceProvider {
               appt.date = data.date;
               appt.time = data.time;
               appt.name = data.name;
-              // this.dataService.editStudent(appt, index);
             }
             else {
               this.dataService.addAppt(data);
+            }
+          }
+        }
+      ]
+    });
+    await prompt.present();
+  }
+
+  async showBlogPrompt(blog?, index?) {
+    const prompt = await this.alertCtrl.create({
+      header: blog ? 'Edit blog' : 'Add blog',
+      message: blog ? "Please edit blog..." : "Please enter blog...",
+      inputs: [
+        {
+          name: 'title',
+          placeholder: 'Title',
+          value: blog ? blog.title : null
+        },
+        {
+          name: 'shortDescr',
+          placeholder: 'Description',
+          value: blog ? blog.shortDescr : null
+        },
+        {
+          name: 'href',
+          placeholder: 'Site link',
+          value: blog ? blog.href : null
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            if (index !== undefined) {
+              blog.title = data.title;
+              blog.shortDescr = data.shortDescr;
+              blog.href = data.href;
+            }
+            else {
+              this.dataService.addBlog(data);
             }
           }
         }

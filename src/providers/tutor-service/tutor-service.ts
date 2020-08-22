@@ -10,12 +10,14 @@ export class TutorServiceProvider {
 
   students: any = [];
   appts: any = [];
+  blogs: any = [];
   dataChanged$: Observable<boolean>;
 
   private dataChangeSubject: Subject<boolean>;
 
   baseURL = "http://localhost:8080/";
   apptURL = "http://localhost:8081/";
+  blogURL = "http://localhost:8082/";
 
   constructor(
     public callNumber: CallNumber,
@@ -66,10 +68,20 @@ export class TutorServiceProvider {
       });
   }
 
+  // Add Appointment
   addAppt(appt) {
     this.http.post(this.apptURL + "api/appts", appt)
       .subscribe(res => {
         this.appts = res;
+        this.dataChangeSubject.next(true);
+      })
+  }
+
+  // Add Blog post
+  addBlog(blog) {
+    this.http.post(this.blogURL + "api/blogs", blog)
+      .subscribe(res => {
+        this.blogs = res;
         this.dataChangeSubject.next(true);
       })
   }
@@ -100,6 +112,14 @@ export class TutorServiceProvider {
   // Appointments
   getAppts(): Observable<any> {
     return this.http.get(this.apptURL + 'api/appts').pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  // Blogs
+  getBlogs(): Observable<any> {
+    return this.http.get(this.blogURL + 'api/blogs').pipe(
       map(this.extractData),
       catchError(this.handleError)
     );

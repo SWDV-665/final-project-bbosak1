@@ -23,10 +23,6 @@ export class Tab2Page {
     })
   }
 
-  onChange($event) {
-    console.log($event.format('MM-DD-YYYY'));
-  }
-
   loadAppts() {
     this.dataService.getAppts()
       .subscribe (

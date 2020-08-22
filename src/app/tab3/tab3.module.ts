@@ -5,7 +5,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
 
-import { Tab3PageRoutingModule } from './tab3-routing.module'
+import { Tab3PageRoutingModule } from './tab3-routing.module';
+import { TutorServiceProvider } from '../../providers/tutor-service/tutor-service';
+import { InputDialogServiceProvider } from '../../providers/input-dialog-service/input-dialog-service';
 
 @NgModule({
   imports: [
@@ -14,6 +16,10 @@ import { Tab3PageRoutingModule } from './tab3-routing.module'
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
+  ],
+  providers: [
+    TutorServiceProvider,
+    InputDialogServiceProvider
   ],
   declarations: [Tab3Page]
 })
